@@ -548,8 +548,6 @@ end
 
 **[DİZEDEKİ BİR ÖĞEYİ DEĞİŞTİRİN](https://www.educative.io/courses/learn-ruby-from-scratch/m2yyVJBx4xE)**
 
-![Ekran Resmi 2022-03-23 8.36.56 PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6cc2fa33-857c-47d3-bc7b-2c8f11efe05c/Ekran_Resmi_2022-03-23_8.36.56_PM.png)
-
 ```ruby
 def replace_element(input_array).        Çıktı:99
   input_array[3] = 99
