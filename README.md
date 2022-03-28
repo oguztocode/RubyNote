@@ -1,4 +1,4 @@
-https://www.notion.so/invite/ce94fb4997c2105e9d6cc5ec5cd6b9ec86e4c894
+
 # RubyNote
 **RUBYYYY**
 
