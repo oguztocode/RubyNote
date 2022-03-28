@@ -809,9 +809,321 @@ puts name.lenght.                         12
 ```
 
 Ve bunun gibi.
-
 Başka bir deyişle, önce konuşmak istediğiniz nesneyi adreslersiniz veya bahsedersiniz ve ardından nokta ile **.** yöntem adını belirterek nesneye “mesaj gönderirsiniz”. Biz de diyoruz ki: “yöntemi string üzerinde büyük harf olarak çağırırsınız”.
 
 Bir nesne üzerinde bir yöntemi çağırmak için bir nokta kullanılır.
 
 Diğerleri nesnenin kendisini değiştirir ve bazılarının yan etkileri vardır ve başka bir şeyi değiştirir, örneğin **puts**ve **p** her ikisi de ekrana bir şeyler verir. Diğer yöntemler dosyaları kaydedebilir, e-posta gönderebilir veya bir veritabanında bir şeyler depolayabilir.
+
+
+[ARGÜMANLARI GEÇMEK](https://www.educative.io/courses/learn-ruby-from-scratch/m2qGXRR9G6A)
+
+## **Ekstra bilgi gerekli [#](https://www.educative.io/courses/learn-ruby-from-scratch/m2qGXRR9G6A#Extra-information-needed)**
+
+Bazen bir nesne, istediğinizi yapmak için biraz fazladan bilgiye ihtiyaç duyar.
+
+Örneğin, sınıf , bazı karakterleri silinmiş olarak başka bir String döndüren **String** yöntemi tanımlar . **delete** Bunu yapabilmek için elbette hangi karakterleri kaldırmak istediğimizi bilmesi gerekiyor.
+
+**()** Metot çağrısına (isim) parantez koyarak bazı şeyleri iletebiliriz . Daha sonra gerekli olan fazladan bilgiyi (bizim durumumuzda başka bir dize) parantez içine şu şekilde ekleyebiliriz:
+
+```ruby
+puts name = "Ruby Monstas"    Çıktı: Runstas
+puts name.delete("by Mo")
+```
+
+Argüman gerektiren bir yönteme başka bir örnek, **prepend** Strings'deki yöntemdir:
+
+```ruby
+puts name = "Ruby Monstas"       Çıktı: Ruby Monstas
+puts name.prepend("Oh Hello ")          Oh Hello Ruby Monstas 
+```
+
+Tüm yöntemlerin işlerini yapmak için bu ekstra bilgi bitlerine (argümanlara) ihtiyacı yoktur, örneğin, **length.**Strings'deki yöntem.
+
+
+[LİSTELEME YÖNTEMLERİ](https://www.educative.io/courses/learn-ruby-from-scratch/NE7kO82X5Gz)
+
+Nesneden yöntemlerini hızlı bir şekilde isteyebilirsiniz. Bu doğru, **methods** tüm nesnelerde tanımlanmış bir yöntemdir (tıpkı **class**ve gibi **is_a?**).
+
+Onu çağırdığınızda, nesnenin sahip olduğu tüm yöntem adlarını içeren bir dizi döndürür (yanıt verir).
+
+Diziyi sıralamak mantıklıdır, bu nedenle okunması daha kolaydır. Şöyle:
+
+```ruby
+print "Ruby Monstas".methods.sort 
+Çıktı: [:!, :!=, :!~, :%, :*, :+, :+@, :-@, :<, :<<, :<=, :<=>, :==, :===, :=~, :>, :>=, :[], :[]=, :__id__, :__send__, :ascii_only?, :b, :between?, :bytes, :bytesize, :byteslice, :capitalize, :capitalize!, :casecmp, :center, :chars, :chomp, :chomp!, :chop, :chop!, :chr, :class, :clear, :clone, :codepoints, :concat, :count, :crypt, :define_singleton_method, :delete, :delete!, :display, :downcase, :downcase!, :dump, :dup, :each_byte, :each_char, :each_codepoint, :each_line, :empty?, :encode, :encode!, :encoding, :end_with?, :enum_for, :eql?, :equal?, :extend, :force_encoding, :freeze, :frozen?, :getbyte, :gsub, :gsub!, :hash, :hex, :include?, :index, :insert, :inspect, :instance_eval, :instance_exec, :instance_of?, :instance_variable_defined?, :instance_variable_get, :instance_variable_set, :instance_variables, :intern, :is_a?, :itself, :kind_of?, :length, :lines, :ljust, :lstrip, :lstrip!, :match, :method, :methods, :next, :next!, :nil?, :object_id, :oct, :ord, :partition, :prepend, :private_methods, :protected_methods, :public_method, :public_methods, :public_send, :remove_instance_variable, :replace, :respond_to?, :reverse, :reverse!, :rindex, :rjust, :rpartition, :rstrip, :rstrip!, :scan, :scrub, :scrub!, :send, :setbyte, :singleton_class, :singleton_method, :singleton_methods, :size, :slice, :slice!, :split, :squeeze, :squeeze!, :start_with?, :strip, :strip!, :sub, :sub!, :succ, :succ!, :sum, :swapcase, :swapcase!, :taint, :tainted?, :tap, :to_c, :to_enum, :to_f, :to_i, :to_r, :to_s, :to_str, :to_sym, :tr, :tr!, :tr_s, :tr_s!, :trust, :unicode_normalize, :unicode_normalize!, :unicode_normalized?, :unpack, :untaint, :untrust, :untrusted?, :upcase, :upcase!, :upto, :valid_encoding?]
+```
+
+Evet, yöntem adları Sembol olarak gelir, çünkü bunlar kod olarak kabul edilir.
+
+**Zincirleme Yöntem Çağrıları**
+
+String örneğimizden bazı yöntem çağrılarını şu şekilde zincirleyebiliriz:
+
+```ruby
+name = "Ruby Monstas"              Çıktı: OH, HELLO, RUBY MONSTAS
+puts name.prepend("Oh, hello, ").upcase
+```
+
+Oldukça kullanışlı.
+
+Gördüğünüz gibi Ruby önce biti değerlendirecek,         
+
+**name.prepend("Oh, hello, ")**. Bundan döndürülecek nesneyi (yeni Dize) bilmesi için bunu yapması gerekir, böylece daha sonra **upcase** bu yeni nesne üzerindeki yöntemi çağırabilir.
+
+
+[YÜKLEMLER](https://www.educative.io/courses/learn-ruby-from-scratch/B86JvDn0GZn)
+
+**Tahmin Yöntemleri**
+
+Kural olarak, Ruby'de bu yöntemler ya **true** veya **false**. Örneğin, bir sayının çift mi yoksa tek mi olduğunu sorabiliriz;
+
+```ruby
+puts 5.odd?                    Çıktı: True 
+puts 5.even?                          False
+```
+
+Veya numaranın diğer iki numara arasında olup olmadığını sorabilirsiniz. Açıkçası bu yöntemin diğer iki sayıyı geçmemize ihtiyacı var. Şimdi elimizde iki argüman alan bir yöntem örneğimiz de var:
+
+```ruby
+puts 5.between?(1, 10)          Çıktı: True
+puts 5.between?(11, 20)                False
+```
+
+Bu yöntemlere Ruby'de **Yüklem Yöntemleri** denir.
+
+İçine Dahil Mi?
+
+```ruby
+name = "Ruby Monstas"          Çıktı: True 
+puts name.include?("by")              False
+puts name.include?("r")
+```
+
+Dizilerin yöntemleri vardır **include?** ve Hash'ler şunlara yanıt verir **key?**:
+
+```ruby
+puts [1, 2].include?(1)          Çıktı: True
+
+puts [1, 2].include?(3)                 False
+
+puts ({ "eins"=>"one" }.key?("eins"))   True
+
+puts ({ "eins" => "one" }.key?("zwei")) False
+```
+
+Bir sayı üzerinde hangi yöntemlerin tanımlandığını kontrol ettiğimizde, bazı ilginç olanları buluruz:
+
+```ruby
+print 1.methods.sort
+Çıktı: [:!, :!=, :!~, :%, :&, :*, :**, :+, :+@, :-, :-@, :/, :<, :<<, : <=, :<=>, :==, :===, :=~, :>, :>=, :>>, :[], :^, :__id__, :__send__, :abs, :abs2 , :açı, :arg, :arasında?, :bit_length, :ceil, :chr, :class, :clone, :zorlama, :conj, :conjugate, :define_singleton_method, :payda, :display, :div, :divmod, :aşağı, :dup, :enum_for, :eql?, :equal?, :even?, :extend, :fdiv, :floor, :freeze, :frozen?, :gcd, :gcdlcm, :hash, :i, : imag, :imaginary, :instance_exec, :instance_eval, :instance_exec, :instance_of?, :instance_variable_defined?, :instance_variable_get, :instance_variable_set, :instance_variables, :tamsayı?, :is_a,::, :itself büyüklük, :yöntem, :yöntemler, :modulo, :negatif?, :sonraki, :nil?, :sıfır olmayan?, :pay, :object_id, :tek?, :ord, :faz, :polar, :pozitif?, : pred, :özel_yöntemler, :korumalı_methods, :public_method, :public_methods, :public_send, :quo, :rasyonalize, :gerçek, :gerçek?, :doğru, :dikdörtgen, :kalan, :remove_instance_variable, :respond_to?, :yuvarlak, :send_, :send, singleton_method, :singleton_method_added, :singleton_methods, :size, :step, :succ, :taint, :tainted?, :tap, :times, :to_c, :to_enum, :to_f, :to_i, :to_int, :to_int, : , :kesin, :güven, :untaint, :güvenilmez, :güvenilmeyen?, :upto, :sıfır?, :|, :~]güvenilmeyen?, :upto, :sıfır?, :|, :~]güvenilmeyen?, :upto, :sıfır?, :|, :~]
+```
+
+[PATLAMA](https://www.educative.io/courses/learn-ruby-from-scratch/3jO392nvxDQ)
+
+**Patlama Yöntemleri** 
+
+Bunlar sorulardır ve çağrıldıkları nesneyi değiştirmezler.
+
+```ruby
+name = "Ruby Monstas"          Çıktı: ruby monstas
+puts name.downcase                    Ruby Monstas
+puts name
+```
+
+Yukarıdaki kod satırlarını çalıştırırsanız, yöntemin **downcase** orijinal Dize'nin küçük harfli versiyonu olan yeni bir Dize döndürdüğünü göreceksiniz. Orijinal String'i bir sonraki satırda çıkardığımızda, bunun hala aynı olduğunu görebiliriz: Yöntem **downcase** String'i değiştirmez.
+
+**! İle Biten Yöntemler**
+
+Ancak, bu yöntemlerden bazılarının ünlem işaretiyle biten çeşitleri de vardır **!**. Bu yöntemlere **"bang yöntemleri"** denir ve genellikle çağrıldıkları nesneyi değiştirirler.
+
+Örneğin, yönteme ek olarak, **downcase** Dizelerin bir yöntemi de vardır **downcase!**
+
+```ruby
+name = "Ruby Monstas"         Çıktı: ruby monstas
+puts name.downcase!                  ruby monstas
+puts name
+```
+
+Gördüğünüz gibi **downcase!**, ikinci satırdaki yöntemi çağırmak, String'in kendisini (başvurulan nesne **name**) değiştirdi ve *ayrıca* yeni küçültülmüş sürümü döndürdü.
+
+
+[YÖNTEMLER](https://www.educative.io/courses/learn-ruby-from-scratch/m22EWQlJEkn)
+
+## **Yöntemlerin önemi**
+
+Programlamadaki her şey verilerle ve onunla ilginç şeyler yapmakla ilgilidir. Twitter'ı düşünürseniz, esasen kullanıcılarından 140 karakterlik metin (veri) alır ve başkalarına gösterir.
+
+Ruby'deki en önemli ilkel (basit) veri türlerini zaten öğrendiniz: sayılar, dizeler, true, false ve nil. Ve en yaygın iki veri yapısına, Dizilere ve Karmalara bir göz attık.
+
+Bütün bunlar *veri* kısmıyla ilgili. Yöntemler ise *ilginç şeyler yapmakla* ilgilidir .
+
+Bu bölümde, bir yöntemin anatomisine daha yakından bakacağız ve kendi yöntemlerinizi nasıl uygulayacağınızı ve kullanacağınızı öğreneceğiz.
+
+bu bölümden sonra sizde kendi yönteminizi ıufılayavşikceksiniz
+
+## **Yöntemler davranışı tanımlar**
+
+Yöntemlerin tamamı *davranışı* tanımlamakla ilgilidir , böylece farklı bağlamlarda farklı veri bitlerine kolayca uygulanabilirler.
+
+Örneğin, bir dizeyi dönüştürmek, bir diziyi sıralamak, bir **CSV** veya bir **Excel** dosya okumak, bir e-posta göndermek, Facebook'ta oturum açmak, bir Tweet göndermek gibi şeyler yapan yöntemler vardır.
+
+Bunu koymanın başka bir yolu da şudur: Yöntemler, belirli bir kod parçasına bir ad atamanın bir yoludur. Tıpkı bir değişkenin bir nesneye "aramamızı" veya bir nesneye başvurmamızı sağlaması gibi, yöntemler o nesneyle ilişkili kod parçalarını yürütmemizi sağlar.
+
+Değişkenler nesneleri, yöntemler ise davranışı (kod) adlandırır.
+
+Yöntemler, kodu paketleme ("kapsülleme") ve üzerine bir isim yapıştırma yoluyla kodu yeniden kullanılabilir hale getirir.
+
+Gördüğünüz gibi Ruby, deneyimli programcılar tarafından yazılmış, önceden tanımlanmış birçok yöntemle birlikte gelir. Bu nedenle, bilgisayar bilimi eğitimi almıyorsanız ve veri toplama için kendi karmaşık sıralama algoritmalarınızı uygulama alıştırmasıyla karşı karşıya değilseniz **sort**, Ruby'de Diziler için kutudan çıktığı haliyle zaten tanımlanmış olan yöntemi kullanacaksınız.
+
+
+[BİLEŞENLER](https://www.educative.io/courses/learn-ruby-from-scratch/7AVRYBjQKnQ)
+
+ 
+
+### **Argümanlar ve dönüş değerleri**
+
+Programcılar genellikle bu bağlamda "girdi" terimini kullanmazlar. Bunun yerine, bir yöntemin bir dizi argümanı (girdi parçaları) kabul ettiğini söylüyoruz. Ve “çıktı” yerine dönüş değeri terimini kullanıyoruz: yöntemden geri aldığımız şey.
+
+### A**naloji**
+
+Biraz para koyabileceğiniz, bazı düğmelere basabileceğiniz ve makinenin birkaç dişli ve çarkı döndüreceği ve peşinde olduğunuz çikolatayı tüküreceği bir otomat hayal edin.
+
+Otomat bir yöntem olsaydı, o zaman paranız ve bastığınız düğmeler ***girdidir*** . Makinenin belirli mekaniği dahili olarak döndürme şekli, ***kod bloğudur*** , dahili olarak yaptığı şeydir. Ve dağıttığı ürün ***iade değeridir*** .
+
+Programcı olmayan biri için bundan bahsetmek garip gelse de, bir otomat makinesinin parayı ve verileri çikolataya “dönüştürmenin” bir yolu olduğunu söyleyebiliriz.
+
+Yöntemlerin bir adı vardır, bazı girdiler alır, onunla bir şeyler yapar ve bir sonuç döndürür.
+
+Bir yöntemin girdisine “argümanlar”, çıktısına ise “dönüş değeri” denir.
+
+[YÖNTEM TANIMI](https://www.educative.io/courses/learn-ruby-from-scratch/7nWAA8l1JVj)
+
+## **Tek başına yöntemler [#](https://www.educative.io/courses/learn-ruby-from-scratch/7nWAA8l1JVj#Stand-alone-methods)**
+
+Şimdiye kadar nesneler üzerinde tanımlanan ve nesneler üzerinde çağrılabilen yöntemler gördünüz. **downcase** örneğin, her dizede tanımlanan yöntemi gördünüz .
+
+Ancak Ruby, bu nesnelerin hiçbirinde tanımlı olmayan yöntemlere de izin verir. Bir nevi *bağımsız* yöntemlerdir.
+
+Örneğin, şunu deneyebilirsiniz:
+
+```ruby
+puts is_a?(1)
+```
+
+**Yöntem Tanımlama**
+
+Bir sayı alan, ona sayıyı ekleyen ve sonucu döndüren basit bir yöntem tanımlamamız gerektiğini varsayalım.Bunu şu şekilde yapabiliriz:
+
+```ruby
+def add_two(number)
+number + 2
+end
+```
+
+Bu bir yöntemi *tanımlar .* Henüz *kullanmıyor* : O otomat makinesini yalnızca yapar ve yerleştirirsiniz, böylece daha sonra (kendiniz veya başkaları tarafından) kullanılabilir.
+
+Bu yöntem tanımını adım adım inceleyelim:
+
+- Ruby üstteki kodu okumaya başlayacak ve anahtar kelimeyi bulacaktır **def**. Bu Ruby'ye yeni bir yöntem tanımlamak üzere olduğumuzu söyler.
+- Yöntemlerin bir ada ihtiyacı vardır, bu nedenle Ruby sonra onu arar ve kelimeyi bulur **add_two**.
+- **Ruby daha sonra yönteme “girdi”** olarak hizmet edecek herhangi bir şey tanımlayıp tanımlamadığımızı kontrol eder (unutmayın, bu isteğe bağlıdır). Parantezleri buluyor ve yönteme verilebilecek şeylerin bir listesini tanımlamak üzere olduğumuzu biliyor. *Bu listeye argüman listesi* denir .
+
+ Bir bağımsız değişken listesi, yönteme iletilen nesnelerin adlarını, yöntem adından hemen sonra parantez içine alınmış olarak tanımlar.
+
+- Bizim durumumuzda, argüman listesi tek bir argümana sahiptir **number**, bu da yöntemimizin tek bir şeyi (nesneyi) kabul edebileceği anlamına gelir.
+- Sonraki satır, yöntemimizin sahip olduğu kod bloğudur (veya "kapsüllediği kod"). Bu aynı zamanda *yöntem gövdesi* olarak da adlandırılır . Bizim durumumuzda, bu sadece tek bir satır çünkü yöntemimizin kapsadığı işlem çok basit. Diğer yöntemler (düşün **sort**, Dizilerde tanımlanmış) daha fazla kod gerektirir ve daha uzundur.
+- Yöntem gövdesinin içinde argümanlar *yerel değişkenler* olarak bilinir : Yöntem gövdemizdeki kodun değişken adını nasıl kullandığını görebilirsiniz **number**.
+- Son olarak anahtar sözcük **end** Ruby'ye yöntem gövdesi ve yöntem tanımıyla işimizin bittiğini söyler.
+
+Şimdiye kadar yaptığımız tek şey yöntemi tanımlamak, henüz hiçbir şey için kullanmadık. Bunu bir sonraki bölümde yapacağız.
+
+[KULLANIM](https://www.educative.io/courses/learn-ruby-from-scratch/gxklVMz378l)
+
+**Bir Yöntemi Çağırmak**
+
+Bir metot tanımlandıktan sonra onu kullanabiliriz. Programcılar olarak genellikle bir metot *çağırdığımızı* söyleriz . Bu, Ruby'den yöntem gövdesinin sahip olduğu kodu, verilen bazı argümanlarla (varsa) yürütmesini istediğimiz anlamına gelir.
+
+İşte nasıl göründüğü:
+
+```ruby
+def add_three(number).             Çıktı: 5
+  number + 2
+end
+
+puts add_three(3)
+```
+
+AÇIKLAMA (KOD BRİFİNGİ)
+
+Burada neler olduğunu mikroskop altında inceleyelim. Henüz bunun her bir parçasını anlamadıysanız, endişelenmeyin, bunların tümüne geri döneceğiz.
+
+İlk üç satırda Ruby, yöntemi **add_two** daha önce tartışıldığı gibi tanımlar. Satır **4** kod içermez, bu nedenle Ruby onu görmezden gelir.
+
+- On line **5** Ruby önce parçaya bakacaktır **add_two(3)**. Daha önce tanımlanmış bir yönteme atıfta bulunduğumuzu anlıyor ve bu ona bu yöntemi çağırmak (yürütmek) istediğimizi söyleyecek.
+- Bunu yapmak için, önce parantez içinde ne olduğuna bakması gerekiyor, **()** böylece aktarabiliyor. 'ı bulur **3**. Bu noktada yeni bir yerel değişken yaratır **number** ve ona 3 sayısını atar.
+- Şimdi Ruby, sayıyı geçen yöntem gövdesini yürütmeye başlamaya hazır **3**.
+- Yani Ruby şimdi dosyamızda yukarıdan aşağıya doğru giden normal akıştan sapıyor. Bunun yerine, şimdi yöntem gövdesine atlıyor.
+
+Yöntem *bağımsız değişkenleri* şu şekilde çalışır:
+
+Bir yöntem çağrıldığında ve nesneler argüman olarak iletildiğinde, Ruby dolaylı olarak yerel değişkenleri argüman isimleriyle tanımlar. Geçirilen nesneleri argüman listesindeki değişken isimlerine atar. Bu yerel değişkenler daha sonra yöntem gövdesinde bulunur.
+
+Bizim durumumuzda, sadece bir argümanımız var **number**. **number** Böylece nesnenin atandığı bir yerel değişken elde ederiz **3** (çünkü yöntemi çağırdığımızda iletilen nesne budur).
+
+Yöntem gövdesinin şimdi şöyle okuduğunu hayal edebiliriz:
+
+```ruby
+number = 3
+return number + 2
+```
+
+Tamam, şimdi yöntem gövdesinin içindeyiz:
+
+- Ruby şimdi yöntem gövdesini yürütecek (değerlendirecek, çalıştıracak) (yine yukarıdan aşağıya doğru gidiyor), ki bu bizim durumumuzda return ifadesiyle yalnızca tek bir satırdır **number + 2**
+- • Atandığı **number** için **3** ifade **number+2** olarak değerlendirilir **5** ve bu, yöntem çağrısından döndürülecek değerdir.
+
+Yani Ruby şimdi yöntemin dışına çıkıyor. İfade **add_two(3)** az önce nesneyi döndürdü **5**. Bunun yerine son satırın şimdi şöyle olduğunu hayal edin:
+```ruby
+puts 5
+```
+
+**DÖNÜŞ DEĞERLERİ**
+
+Ruby'de bir yöntem her zaman tam olarak tek bir şey (bir nesne) döndürür.
+
+Döndürülen nesne herhangi bir şey olabilir.
+
+Döndürülen nesne **nil**, "hiçbir şey" anlamına gelen nesne olabilir. Öte yandan, bir sürü şeyi aynı anda döndürmek için ilgilendiğimiz şeyleri tutan bir Dizi döndürebiliriz, ancak Dizinin kendisi yalnızca bir nesnedir.
+
+**Her yöntem her zaman tam olarak bir nesne döndürür.**
+
+## **İade beyanı yok!**
+
+**return** Ayrıca Ruby'de diğer dillerde olduğu gibi deyimini kullanmak zorunda olmadığımızı da unutmayın . Aslında, çoğu Ruby kodu anahtar kelimeyi hiç kullanmaz **return**.
+
+Bu son derece kullanışlıdır, ancak aynı zamanda öğrenmemiz gereken bir şeydir:
+
+Bir yöntemin içine bir dönüş ifadesi koymazsak, yine de bir nesne döndürür: yöntem her çalıştırıldığında, yöntem gövdesinin son değerlendirilen ifadesinden üretilen nesneyi döndürür.
+
+Bunu anlamak önemlidir. Bu yüzden tekrar ifade ediyoruz:
+
+Açıkça hiçbir şey döndürmezsek, bir yöntem yine de son değerlendirilen ifadenin dönüş değerini döndürür.
+
+Bir önceki örneğimizde…
+
+```ruby
+def add_two(number).         Çıktı: 5
+number + 2
+end 
+
+p add_two(3)
+```
+
+… son değerlendirilen ifade ifadedir **number + 2**. Örneğimizde bu ifade **number** atandığı **3** için sayıyı döndürür **5** ve bu nedenle yöntemimiz tarafından döndürülen değer de **5**.
+
+Bazen yöntemden erken “dönmek” isteriz. Aslında, bunu **return** ifadeyi kullanarak yapabiliriz. Ancak şimdilik, bu dava için endişelenmenize gerek yok.
+
+[KAPSAMLAR](https://www.educative.io/courses/learn-ruby-from-scratch/gx89WpnBllD)
+
+![Ekran Resmi 2022-03-27 6.27.22 PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/97cc0cb3-d861-436a-ba2b-10b71c1c2951/Ekran_Resmi_2022-03-27_6.27.22_PM.png)
