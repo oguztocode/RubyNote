@@ -1127,4 +1127,208 @@ Bazen yöntemden erken “dönmek” isteriz. Aslında, bunu **return** ifadey
 
 [KAPSAMLAR](https://www.educative.io/courses/learn-ruby-from-scratch/gx89WpnBllD)
 
-![Ekran Resmi 2022-03-27 6.27.22 PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/97cc0cb3-d861-436a-ba2b-10b71c1c2951/Ekran_Resmi_2022-03-27_6.27.22_PM.png)
+[**YÖNTEMLERİ BİRLEŞTİRME**](https://www.educative.io/courses/learn-ruby-from-scratch/gxpBBnOWEJl)
+
+Diğer metodlardan metodları çağırabiliriz.
+
+Başka Bir Yöntemden Arama Yöntemleri
+
+Örneğin, yöntemimizi add_two başka bir yöntem kullanarak yeniden yazabilir add_one ve onu iki kez çağırabiliriz.
+
+```ruby
+def add_one(number).                    Çıktı: 5
+number + 1
+end
+def add_two(number)
+number = add_one(number)
+add_one(number)
+end 
+
+puts add_two(3)
+```
+
+Ruby’de tüm bu şeyi sadece “+” operatörü kullanarak da çözebiliriz.
+
+“+” Ancak , örnek için, operatörle tamamen aynı şeyi yapan bir yöntemi nasıl ekleyebileceğimize bir göz atalım:
+
+```ruby
+def sum(number, other).      puts sum(3, 8.5)      Çıktı: 11.5
+number + other
+end
+```
+
+Bu örnekte yöntemimizin sum şimdi iki argüman aldığını ve bu nedenle onu çağırdığımızda iki sayı iletmemiz gerektiğini unutmayın.
+
+```ruby
+def sum(number, other).                           Çıktı: 4
+  number + other                                         5
+end
+
+def add_one(number)
+  sum(number, 1)
+end
+
+def add_two(number)
+  sum(number, 2)
+end
+
+puts add_one(3)
+puts add_two(3)
+```
+
+
+[**BASKI İŞLEMLERİ**](https://www.educative.io/courses/learn-ruby-from-scratch/RL8XjQg5EzY)
+
+Terminale birşeyler veren kısa bir Ruby programı çalıştırmayı içerir.Şimdiye kadar, çoğunlukla puts bunu yapmak için yöntemi kullandık.
+
+Bu yöntem yöntemdir **p**. Daha iyi anlamak **p** için önce başka bir metoda bakmak istiyoruz ki bu metod **inspect**.
+
+Inspect yöntemi, Ruby’deki herhangi bir nesnede kullanılabilir.Nesnenin kendisinin temsili olan bir dize döndürür: nesneyi oluşturmak için kullandığınız koda mümkün olduğunca yakın bir temsil.
+
+```ruby
+puts 5.inspect.                     Çıktı: 5
+
+puts "A string".inspect
+
+puts [1, 2, 3].inspect
+```
+
+Gördüğünüz gibi, döndürülen dize **inspect**, nesneyi oluşturmak için kullandığımız Ruby koduyla tamamen aynıdır.
+
+Ancak, yazmak **puts something.inspect** oldukça zor bir iştir.Bu, nesnenin yanına yazılacak 12 karakterdir.
+
+Bu yöntem şöyle uygulanır:
+
+```ruby
+def p(object)
+puts object.method
+end
+```
+
+Belirli bir kod satırının ne yaptığını, bir değişkene ne atandığını veya bir yöntem çağrısının ne döndürdüğünü anlamaya p çalıştığınızda, size tam olarak aradığınız şeyin ne olduğunu söylediği için kullanımını öneririz.
+
+puts diğer yandan akıllı olmaya çalışır.
+
+Örneğin, bir dizeye ilettiğinizde, puts o zaman nesnelerin her birinin çıktısını ayrı bir satırda verir:
+
+```ruby
+something = [1, 2, 3].                
+puts something                         
+p something 
+```
+
+```ruby
+Çıktı: 1
+2
+3
+Çıktı: [1, 2, 3]
+
+```
+
+Ayrıca, sayıları ve sayıları içeren dizelerin çıktısı, kullandığınızda tamamen aynıdır puts:
+
+```ruby
+puts 123                   Çıktı: 123 
+puts "123"                        123
+                                  
+p "123"                           "123"
+
+```
+
+Çıktısından, **puts** aradığınız nesnenin sayılar içeren bir dizi mi yoksa dizeler içeren bir dizi mi yoksa yalnızca satır sonları içeren uzun bir dize mi olduğu genellikle net değildir.
+
+Kısacası, **puts** ekrana gerçekten bir şey çıkarması gereken bir program yazarken kullanışlıdır.
+
+Bu, işinizde kendi hayatınızı kolaylaştırmak için yazdığınız bir komut satırı aracı olabilir ve bu,
+
+bazı tekrarlayan işleri otomatikleştirmeye yardımcı olur. Ya da Ruby programlama alıştırmalarında işe yarar. Öte yandan, p kodunuzun nen yaptığını anlamaya çalışırken, örneğin belirli bir hatayı bulmaya çalışırken yararlıdır.
+
+# Yürütme Akışı
+
+**[YÜRÜTME AKIŞI](https://www.educative.io/courses/learn-ruby-from-scratch/RMjPL4NGDlO)** 
+
+Bir Ruby dosyasını çalıştırdığınızda (ruby runtime ile) Ruby kodunuzu okuyacak ve yukarıdan aşağıya satır satır yürütmeye başlayacaktır.
+
+Örnek
+
+Örneğimize yukarıdan ve Ruby kontrol akışının mikroskop altında nasıl geçtiğine bakalım.
+
+puts Pratikte buna karışı önermemize rağmen, bunu daha açık hale getirmek için yöntem çağrısına
+
+parantez ekledik:
+
+```ruby
+def add_two(number).                  Çıktı: 5
+number + 2
+end 
+puts (add_two(3))
+```
+
+KOD BRİFİNGİ
+
+Ruby 1.satırdan başlar ve anahtar kelime ile başlayan yöntem tanımımızı bulur **def**, bu nedenle 3. satırdaki anahtar kelimeyi bulana kadar hepsini okuyacaktır end.Şimdilik, bu yöntemi tanımlamaktan ve bellekte tutmaktan başka birşey yapmıyor. Şu andan itibaren kullanılabilir.
+
+Şimdi 5.satırda, Ruby kelimeyi kullandığımızı buluyor puts ve ona bir şey iletmeye çalıştığımızı görüyor, bu yüzden bu bir yöntem çağrısı olmalı.
+
+Bir metodu çağırmak için Ruby önce iletmek istediğimiz değerleri değerlendirmesi gerekir.Böylece Ruby şimdi parantezler arasında ne olduğuna bakar ve başka bir çağrı yöntemi bulur add_two(3).
+
+Yine, yöntemi gerçekten çağırmak için add_two Ruby’nin önce iletmek istediğimiz değerleri değerlendirmesi gerekiyor.
+
+Bu durumda, bu sayıdır 3, dolayısıyla Ruby bu nesneyi (sınıfın bir örneği) yaratacaktır NUMBER.add_two Şimdi nihayet yeni oluşturulan numaraya geçerek yöntemi gerçekten çağırmaya hazır.
+
+Şimdi ilk kez, Ruby, basitçe yukarıdan aşağıya doğru giden varsayılan yürütme akışından sapmaya başlar. Bunun yerine, bir yöntem çağırdığımız için, Ruby şimdi daha önce yöntem için tanımladığımız yöntem gövdesine giriyor add_two: kontrol akışı şimdi 2.satıra atlıyor.
+
+Bu anda argümanı olan bir metoda girdiğimiz için, Ruby ayrıca bir yerel değişken tanımlar number ve geçirilen nesneyi, sayıya 3 bu değişkene atar.
+
++Şimdi Ruby 2.satırı değerlendirmeye hazır. Değişkene atanan değer olan, number operatörünü kullandığımızı buluyor 3. Bunu yapmak için Ruby önce operatörün sağ tarafında bulunan, örneğimizde yine bir satı olan şeyi değerlendirir. NUMBER Bu nedenle Ruby, bu sefer değeri ile sayıyı (sınıfın bir örneği) yaratacaktır.
+
+2 Ruby artık operatörü değerlendirmeye ve sayıya sayıyı eklemeye hazırdır 3. Bu işlem, olan yeni bir sayı (sınıfın bir örneği Number) döndürür 5.
+
+Ruby yöntem gövdesinin sona erdiğini anlar ve bu nedenle, son değerlendirilen ifadenin dönüş değeri olduğundan add_two, dönüş değeriyle yöntemden döner 5.
+
+Bu, Ruby’nin ikinci atlayışıdır:kontrol akışı satır 5’e geri döner.Ruby artık yöntem çağrısını değerlendirmeyi tamamlamıştır add_two(3) ve bu yöntem çağrısını nesneyi döndürmüştür 5.
+
+puts Ruby, sonunda nesneyi geçen yöntemi çağırabilir ve 5 daha sonra yazdıracaktır.
+
+Örnekler
+
+[KİŞİYİ SELAMLAYIN](https://www.educative.io/courses/learn-ruby-from-scratch/mE0xABkW38O)
+
+```ruby
+# Start your code here 
+def greet(name)
+result = "Hello #{name}!"
+return result  
+end
+```
+
+[RASTGELE SELAMLAYIN](https://www.educative.io/courses/learn-ruby-from-scratch/mE0xABkW38O)
+
+```ruby
+# Start your code herege
+def greet (name)
+greetings = ["Hello", "Hi", "Ohai", "ZOMG"].shuffle
+result = "#{greetings.first} #{name}!" 
+return result
+end
+```
+
+[MİLLERİ KİLOMETREYE DÖNÜŞTÜR](https://www.educative.io/courses/learn-ruby-from-scratch/RMlq00LqkOY)
+
+```ruby
+# Start your code here 
+  def miles_to_kilometers(miles)
+  result = miles * 1.609_34
+  return result
+  end
+```
+
+[ARTIK YILI KONTROL EDİN](https://www.educative.io/courses/learn-ruby-from-scratch/7nYzBD5gOxA)
+
+```ruby
+# Start your code here
+  def leap_year?(year)
+  result = (year % 400 == 0 or year % 100 != 0 and year % 4 == 0)
+  return result
+  end
+```
