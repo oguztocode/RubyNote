@@ -1373,3 +1373,59 @@ p [1, 2] * 3                                  [1, 2, 1, 2, 1, 2]
 ```
 
 Yine `+`operatör, iki diziyi tek bir büyük dizide birleştirmeye yarar. ***** Bir diziye ve bir sayıya uygulanan operatör, orijinal öğelerin tekrarlandığı büyük bir dizi elde etmek anlamına gelir.
+
+**[MANTIKSAL OPERATÖRLER](https://www.educative.io/courses/learn-ruby-from-scratch/B885mV6krBN)**
+
+Mantıksal operatörler, belki daha yaygın olarak, **boole operatörleri** olarak da adlandırılır.
+
+## **Boole mantığı ve kökeni**
+
+*"Boolean" terimi, 1847'de "George Boole" tarafından yazılan "The Mathematical Analysis of Logic"* kitabından gelmektedir . Boole mantığı, bilgisayarların ve programlamanın geliştirilmesinde temel olmuştur, çünkü özünde bilgisayarlar, bilgisayarların tamamen veri işlemekle ilgilidir. veya mevcut bir akış yok: açık vs. kapalı (doğruya karşı yanlış).
+
+## **Boole operatörlerinin türleri**
+
+Merak ediyorsanız, google'da bu konuyu çevrimiçi okumaya teşvik edin, ancak şimdilik üç temel boole operatörüne ve ne yaptıklarına bakabiliriz: **and**, **or**, ve **not**.
+
+### **Operatör ve [#](https://www.educative.io/courses/learn-ruby-from-scratch/B885mV6krBN#Operator-and)**
+
+Operatör **and** her zaman iki değer (işlenenler) arasında görünür **true** ve yalnızca ve yalnızca bu değerlerin her ikisi de ise döner **true**. Yani sadece **true and true** ifadesi **true**. Tüm ifadeler **true and false**, **false and true**, olarak **false and false** değerlendirilir **false**.
+
+Bunu İngilizce cümleler bağlamında düşünürseniz, o zaman bu çok mantıklı olacaktır: *Vegan ise ve hala birazları varsa, restoranda domates çorbası alacağım.*
+
+### **Operatör veya**
+
+Operatör ise değerlerden en az biri ise **or** döner . Bu nedenle, yalnızca her iki değer de yanlışsa yanlıştır .**truetruefalse**
+
+### **Operatör**
+
+Operatör, and operatörlerinden **not** farklı **and** olarak **or** yalnızca bir işlenen üzerinde çalışır. Operatör **not** basitçe olumsuzlanmış, zıt değeri döndürür, yani **not true** döndürür **false** ve **not false** döndürür **true**. Bu nedenle, aşağıdaki kod satırları aynıdır:
+
+```ruby
+puts "This is always: #{not false}"
+puts "This is always: #{not true}"
+```
+
+## **Operatör önceliği [#](https://www.educative.io/courses/learn-ruby-from-scratch/B885mV6krBN#Operator-precedence)**
+
+Bu üç operatörün her biri iki versiyon halinde gelir:
+
+- **and&&**
+    
+    ve
+    
+- **or||**
+    
+    ve
+    
+- **not!**
+    
+    ve
+    
+    İki versiyon arasındaki fark, "operatör önceliği" denen şeyle ilgilidir.
+    
+
+**1 + 2 * 3** Matematikten, bunun olarak değerlendirildiğini biliyorsunuz **7**, değil **9**. Çarpma ***** operatörü daha güçlü bağlanır ve toplama operatöründen önce gelir **+**. Başka bir deyişle **1 + 2 * 3**, ile aynıdır **1 + (2 * 3)** ve ile aynı değildir **(1 + 2) * 3**.
+
+Ruby'de , , ve operatörleri , **&&**ve **||**' **!** den daha güçlüdür ve bu nedenle , ve diğerlerinden önce *gelir* .**andornot**
+
+Ayrıca şunu da unutmayın and, daha güçlü bir şekilde bağlanır or, böylece benzeri bir ifade yerine yerine true or true and falseolarak yorumlanır ve olarak değerlendirilir .true or (true and false)(true or true) and falsetrue.
