@@ -1332,3 +1332,44 @@ end
   return result
   end
 ```
+
+[ARİTMETİK OPERATÖRLER](https://www.educative.io/courses/learn-ruby-from-scratch/3j62BA6gRrR)
+
+Aritmetik Operatörler:
+
+🧟‍♀️ **+ Toplama İşlemi**
+
+🧟‍♀️ **- Çıkarma İşlemi**
+
+🧟‍♀️ *** Çarpma İşlemi**
+
+🧟‍♀️ **/ Bölme İşlemi**
+
+🧟‍♀️ **** Üs Alma İşlemi** 
+
+🧟‍♀️ **% Mod Alma İşlemi**
+
+---
+
+```ruby
+puts 2 ** (-3)                  Çıktı: 1/8
+puts (-2) ** 3                         -8
+```
+
+**Operatör Davranışı Veri Türlerine Bağlıdır**
+
+Bu operatörlerden bazılarının diziler için farklı bir anlama geldiğini hatırlayın: a `+`on iki dizi kullanmak, bunların tek bir uzun dizide birleştirileceği anlamına gelir. Ve `*`bir dize ile bir sayı arasında kullanmak, onu birçok kez tekrarlamak anlamına gelir.
+
+Diziler için benzer bir şey gördük.
+
+```ruby
+p "ruby" + "!"                         Çıktı: "ruby!"
+
+p "ruby" * 3                                  "rubyrubyruby"
+
+p [1, 2] + [3, 4]                             [1, 2, 3, 4]
+
+p [1, 2] * 3                                  [1, 2, 1, 2, 1, 2]
+```
+
+Yine `+`operatör, iki diziyi tek bir büyük dizide birleştirmeye yarar. ***** Bir diziye ve bir sayıya uygulanan operatör, orijinal öğelerin tekrarlandığı büyük bir dizi elde etmek anlamına gelir.
