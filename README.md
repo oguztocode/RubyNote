@@ -1429,3 +1429,411 @@ Bu üç operatörün her biri iki versiyon halinde gelir:
 Ruby'de , , ve operatörleri , **&&**ve **||**' **!** den daha güçlüdür ve bu nedenle , ve diğerlerinden önce *gelir* .**andornot**
 
 Ayrıca şunu da unutmayın and, daha güçlü bir şekilde bağlanır or, böylece benzeri bir ifade yerine yerine true or true and falseolarak yorumlanır ve olarak değerlendirilir .true or (true and false)(true or true) and falsetrue.
+
+[KARŞILAŞTIRMA OPERATÖRLERİ](https://www.educative.io/courses/learn-ruby-from-scratch/gx2mRoQoGBk)
+
+Birşeyleri karşılaştırmak için Ruby’nin bir sürü karşılaştırma operatörü vardır.
+
+**Operatör**
+
+Operatör, her iki nesne de aynı kabul edilirse **==** döner. true
+
+Örneğin, her iki taraftaki sayılar aynı değeri temsil ettiği için 1 == 1 * 1 dönecektir. Her iki dize de aynı değere sahip olduğu için true ifade “A” == “A” de döner. true
+
+Aynı öğeleri aynı sırada içerdiklerinde iki dize eşdeğerdir. Örneğin dönecek, ancak ve her ikisi de dönecek. [1, 2] == [1, 2] true [1, 2] == [2, 3] ve [1, 2] == [2, 1] false.
+
+Eşdeğer Kelimesinin Anlamı Nedir? 
+
+"Eşdeğer" (veya "aynı olarak kabul edilir") dediğimizi unutmayın, çünkü teknik olarak iki nesne olmak zorunda değildir (ve çoğu zaman, örneklerimizde olduğu gibi) aynı nesneler değildir. Örneğin, **"A" == "A"** Ruby ifadesini değerlendirirken aslında her ikisi de tek bir karakter içeren iki farklı dize nesnesi oluşturacaktır **A**.
+
+Pratikte, bu neredeyse her zaman istediğiniz şeydir. Nadiren, iki nesnenin aynı nesne olup olmadığını kontrol etmeniz gerektiğinde, yöntem vardır **equal?.** Örneğin,
+
+```ruby
+puts "A".equal?("A")                    Çıktı: False
+letter="A"                                     True
+puts letter.equal?(letter) 
+```
+
+**Diğer Karşılaştırma Operatörleri**
+
+Diğer karşılaştırma işleçleri küçüktür **<**, küçüktür veya eşittir **<=**, büyüktür **>** ve büyüktür veya eşittir **>=**. Ayrıca, beklediğiniz şekilde sayılar ve diziler üzerinde de çalışırlar. Sayılar ve diziler üzerinde birkaç kombinasyon deneyin:
+
+Karşılaştırma operatörleri , ifadelerdeki koşulları formüle etmek için çoğunlukla [**koşullu ifadelerle](https://www.educative.io/collection/page/10370001/5658174447157248/5732605190209536) if** birlikte kullanılır . Bunlar hakkında daha sonra daha fazlasını öğreneceğiz ama sadece bir göz atmak için:
+
+```ruby
+number = 20 
+puts "#{number} is greater than 10." if number > 10
+
+Çıktı: 20 is greater than 10.Operatör <==> #
+
+```
+
+### Operatör <=>
+
+Ruby'deki en komik operatör **<=>**, çünkü buna uzay gemisi operatörü deniyor. Şaka değil :) Nadiren kullanılır ve özel sıralama yöntemlerini uygulamak için kullanışlıdır.
+
+[OPERATÖRLER YÖNTEMLERDİR](https://www.educative.io/courses/learn-ruby-from-scratch/qVDnBMEZOAk)
+
+**+**Daha önce kısaca bahsedildiği gibi, bir sayının aritmetik operatörleri , **-**, *****, ve gibi adlandırılmış yöntemleri vardır **/**. Doğru! İlginç.
+
+Bunu düşünürseniz, mantıklı geliyor: Her şey bir nesneyse, sayılar da nesnedir. “Bir şeyler yapmak”, yöntemlerle onları çağırmak yoluyla çalışmak anlamına geliyorsa, ne olurdu **+**? Elbette bir yöntem.
+
+Ancak, bu nokta gösterimini kullanarak nesneler üzerinde yöntemler çağırırsak **.**, noktalar nerede **2 + 3 * 4**?
+
+İşin püf noktası şudur: Ruby bunları sizin için sessizce ekler. Aşağıdaki kodu yazarsanız:
+
+```ruby
+puts number = 2 + 3 * 4
+```
+
+Sonra Ruby bunu aşağıdakine çevirecek:
+
+```ruby
+puts number = 2.+(3.*(4)) 
+```
+
+## **Sözdizimi şekeri! [#](https://www.educative.io/courses/learn-ruby-from-scratch/qVDnBMEZOAk#Syntax-sugar!)**
+
+Ruby, bizim için okumayı ve yazmayı kolaylaştırmak için biraz sözdizimi ekler: Yazmak için oldukça kötü bir şey olan 
+
+**number = 2 + 3 * 4** yerine yazmamıza izin verir. 
+
+**number = 2.+(3.*(4))**
+
+Bu, "sözdizimi şekeri" olarak adlandırılan bir şeydir, çünkü dili daha tatlı hale getirir (şaka değil).
+
+Bu arada, bu diğer şeyler için de aynı şekilde çalışır.
+
+Örneğin, `[]`okuma ve yazma için köşeli parantez kullanan dizi ve karma sözdizimini öğrendiniz.
+
+Ruby bu kodu çevirir:
+
+```ruby
+array = [1, 2, 3]
+array [3] = 4
+puts array[3]
+
+hash = {:one => 'eins', :two => 'zwei'}
+hash[:three] = 'drei'
+puts hash[:three]
+
+Çıktı:
+4
+drei
+```
+
+Bu yöntem çağırlarına:
+
+```ruby
+array = [1, 2, 3]
+array.[]=(3, 4)
+puts(array.[](3))
+
+hash = { :one => 'eins', :two => 'zwei' }
+hash.[]=(:three, 'drei')
+puts(hash.[](:three))
+
+Çıktı:
+4
+drei
+```
+
+Bunu bilmek, dizilere veya karmalara benzeyen ve hisseden ancak farklı davranan sınıflar yazmak istediğinizde yardımcı olabilir.
+
+# Bloklar Nedir?
+
+[**BLOKLAR NEDİR?**](https://www.educative.io/courses/learn-ruby-from-scratch/RMj5q0Dgv0Y)
+
+Yöntemler Gibi Ama İsimsiz
+
+Bloklar, programcıların Ruby’de en sevdiği şeylerden biridir. Çok esnek kod yazmamızı sağlayan son derece güçlü bir özelliktir. Aynı zamanda çok iyi okuyorlar ve her yerde kullanılıyorlar.
+
+Peki Blok Nedir?
+
+![Ekran Resmi 2022-04-01 10.22.17 AM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7e25f183-f064-43a1-8969-8a51f6bb1754/Ekran_Resmi_2022-04-01_10.22.17_AM.png)
+
+**Bir blok, temelde, bir yöntemle aynı şeydir, ancak bir adı yoktur ve bir nesneye ait değildir.**
+
+**Blok anonim bir kod parçasıdır, girdileri argümanlar şeklinde kabul edebilir ve bir değer döndürür, ancak bir adı yoktur.**
+
+Blok, argümanları kabul eden ve bir değer döndüren bir kod parçasıdır. Yöntem çağrısına her zaman bir blok iletilir.
+
+```ruby
+5.times do
+ puts "Oh, hello from inside a block!"
+end
+Çıktı: 
+Oh, hello from inside a block!
+Oh, hello from inside a block!
+Oh, hello from inside a block!
+Oh, hello from inside a block!
+Oh, hello from inside a block!
+```
+
+Görüldüğü gibi times sayılar üzerinde tamınlanan bir metottur: sayı üzerindeki 5.times metodu çağırır.times 5
+
+Şimdi, bu yöntem çağrıldığında kendisine iletilen tek şey bloktur: bu, ve arasındaki anonim kod **do parçasodor end. times Yönteme argüman olarak bir blok dışında iletilen başka nesne yoktur.**
+
+Yöntem times, bloğu 5 kez çalıştıracak şekilde uygulanır ve böylece kodu çalıştırdığınızda mesajı **"Oh, hello from inside a block!"** 5 kez yazdırır.
+
+times Bu, sayılarla ilgili yöntemin nasıl çalıştığı (ve blokların nasıl çalıştığı) aşağı yukarı budur :times bloğu (talimatları) alır ve çalıştırdığı sayının değeri kadar çalıştırır.
+
+Kod neredeyse İngilizce bir cümle gibi okuyor Beş kez bu mesajı veriyor, değil mi? Öyle ve Rubyistlerin blok kullanmayı sevmesi nedenlerinden biri de bu.
+
+## **Bloklar hakkında kavraması oldukça zor görünen şeyler**
+
+- İlk olarak, bunlar anonim kod parçalarıdır.
+- İkincisi, tıpkı diğer nesneler gibi yöntemlere iletilir.
+- Üçüncüsü, yine de (yöntemler gibi) iletildiği yöntemin içinden yürütülebilirler.
+
+**Özetlemek gerekirse:** Yöntemler yalnızca argüman olarak iletilen nesneler biçimindeki girdileri kabul edemez. Ayrıca anonim bir kod bloğu olan bu özel girdi parçasını da kabul edebilirler. Ve daha sonra, onunla faydalı şeyler yapmak için bu kod bloğunu çalıştırabilirler.
+
+# Alternatif Blok Sözdizimleri
+
+**[ALTERNATİF BLOK SÖZDİZİMLERİ](https://www.educative.io/courses/learn-ruby-from-scratch/3jY44k8r39r)**
+
+**Blokları Tanımlamanın Alternatif Bir Yolu**
+
+Ruby, daha önce gösterilen sözdiziminin yanında do ve end kullanarak bir blok tanımlamak için küme parantezlerini kullanan alternatif bir sözdizimi ile birlikte gelir.
+
+Bu iki ifade tam olarak aynı şeyi yapar:
+
+```ruby
+5.times do
+  puts "Oh, hello!"
+end
+
+5.times { puts "hello!" }
+
+Çıktı: 
+Oh, hello!
+Oh, hello!
+Oh, hello!
+Oh, hello!
+Oh, hello!
+hello!
+hello!
+hello!
+hello!
+```
+
+Her iki ifade de yönteme iletilen bir bloğu tanımlar times. Ve her iki blok da tek bir kod satırı içerir.
+
+do Bloklar, ve end veya küme parantezler içine kod eklenerek tanımlanabilir {}.
+
+Hangi Sözdizimi Kullanılacak? 
+
+Ruby topluluğunda, tek satırlı bir bloğunuz varsa ve aynı satıra güzel bir şekilde uyuyorsa kaşlı ayraç kullanma kuralı vardır(örnekte olduğu gibi).
+
+Bloğunuzda birden fazla satır olması gerektiğinde , do ve kullanarak sözdizimini kullanırsınız end. Bazen insalar do ve end sözdizimini, kodu daha okunaklı hale getirdiğini düşündüklerinde de kullanırlar.
+
+{} Kod bir satıra sığdığında, bloklar için küme parantezlerini kullanın.
+
+# Bağımsız Değişkenleri Engelle
+
+[BAĞIMSIZ DEĞİŞKENLERİ ENGELLE](https://www.educative.io/courses/learn-ruby-from-scratch/B8n6NqO538N)
+
+Bloklar, diziler ve karmalar gibi koleksiyonlarda tanımlanan yöntemlere aktarıldığında çok anlamlıdır.
+
+Yöntemi kullanan önceki örneğimizde, times bloğumız bir argümanı kabul etmedi.Bir argümanı kabul eden bir blok şöyle görünür:
+
+```ruby
+[1, 2, 3, 4, 5].each do |number|
+  puts "#{number} was passed to the block"
+end
+
+Çıktı:
+1 was passed to the block
+2 was passed to the block
+3 was passed to the block
+4 was passed to the block
+5 was passed to the block
+```
+
+each in Ruby: **Ruby'de her biri nasıl çalışır? her biri bir nesne üzerinde yalnızca başka bir yöntemdir. Bu, her bir dizi üzerinde yineleme yapmak istiyorsanız, o dizi nesnesindeki her yöntemi çağırdığınız anlamına gelir. İlk argüman olarak bir liste ve ikinci argüman olarak bir blok alır.**
+
+```ruby
+[1, 2, 3, 4, 5].each { |number| puts "#{number} was passed to the block" }
+
+Çıktı:
+1 was passed to the block
+2 was passed to the block
+3 was passed to the block
+4 was passed to the block
+5 was passed to the block
+```
+
+**Parantez Yerine Borular**
+
+Bir bloğun argüman listesini yuvarlak içine almak yerine, tıpkı metod argüman listelerinde olduğu gibi, Ruby bizden “dikey çubuklar” kullanmamızı istiyor (biz bunlara boru diyoruz)
+
+Bu nedenle, bloklar için, bir blok anonimken yöntemin bir ad istemesi dışında, bir yöntem tanımı için do |number| olanla aynıdır: ve her ğikiside argüman listeleridir. Birincisi bloklar için, ikincisi metotlar için kullanılır. def add_two (number), |number|.
+
+> Blok argümanlar parantezler yerine borular arasında listelenir.
+> 
+
+Şimdi, yukarıdaki kod örneğini çalıştırdığınızdai dizede yer alan sayıların her biri için mesajın yazdırıldığını göreceksiniz.
+
+Öğelerinin her biri [i](http://i.in)çin bu dizeyle, onu adlandırarak number aşağıdaki mesajı verin.
+
+Yöntem each dizelerde tanımlanmıştır ve tam da bunu yapar:
+
+Dizedeki öğelerin her birini alır ve bu öğreyi argüman olarak ileterek bloğu çağırır. Blok daha sonra elemanla ne yapmak istersen onu yapabilir. Bizim durumumuzda, onu bir dizeye enterpolasyon yapıp ekrana yazdırıyoruz.
+
+# Blok Dönüş Değerleri
+
+[BLOK DÖNÜŞ DEĞERLERİ](https://www.educative.io/courses/learn-ruby-from-scratch/3jEO1w5Y65Q)
+
+Bir bloğun tıpkı yöntemler gibi bir değer döndürdüğünü söylediğimizi hatırlıyor musunuz?
+
+Şimdiye kadar yukarıdaki iki örneğimizde bloğun dönüş değerleri ile ilgili herhangi bir işlem yapmadık.
+
+**Collect Kullanan Bir Örnek**
+
+İşte bunu yapan bir örnek: 
+
+```ruby
+p [1, 2, 3, 4, 5].collect { |number| number + 1 }
+
+Çıktı:
+[2, 3, 4, 5, 6] 
+```
+
+Bu, sayı dizisini alacak ve onu başka bir diziye dönüştürecektir.
+
+Açıklama
+
+Bunu, collect her öğe için verilen bloğu yürüten ve blok taradından döndürülen dizi dönüş değerlerinin her birini toplayan orijinal dizideki yöntemi çağırarak yapar. Elde edilen dizi daha sonra yöntem tarafından döndürülür collect ve ekrana yazdırılır
+
+Başka bir deyişle, yöntem collect bloğu bir transformatör olarak kullanılır.Dizinin her öğesini alır ve onu başka bir şeye dönüştürmek için bloğa geçirir ve daha sonra dönüştürülen değerleri yöntemin sonunda döndüreceği yeni bir dizide tutar.collect
+
+Yöntemin collect bir takma adı olduğunu unutmayın, bu map. Bunlar tamamen aynı yöntemlerdir. Çoğu programcı, daha kısa olduğu ve diğer dilerde daha yaygın olarak kullanıldığı için map tercih eder. Ancak yöntemin ne yaptığını daha net ifade ettiği için daha sık collect tercih ediyoruz.
+
+Collect:
+
+yakut | Dizi toplama () işlemi Array#collect() : Collect(), dizinin her öğesi için bağımsız değişken bloğunu bir kez çağıran bir Array sınıfı yöntemidir. Blok tarafından döndürülen değere sahip yeni bir dizi döndürülür.
+
+Yöntem **collect** veya **map** bir diziyi başka bir diziye dönüştürmek için kullanılabilir.
+
+**Select Kullanan Bir Örnek**
+
+İşte bloğun dönüş değerini kullanan başka bir örnek, ne işe yaradığını tahmin edebilir misiniz?
+
+```ruby
+p [1, 2, 3, 4, 5].select { |number| number.odd? }
+
+Çıktı:
+[1, 3, 5]
+```
+
+Bu durumda, yöntem select bloğu farklı bir şekilde kullanılır: diziden değerleri seçmek için bir filtre veya kriter olarak ve ardından seçilen değerlerle yeni bir dizi döndürür.
+
+**Kod Brifingi**
+
+“Bir dize oluşturuyoruz [1, 2, 3, 4, 5]
+
+“Daha sonra select üzerinde methodu çağırıyoruz ve bloğumuzu geçiyoruz.
+
+“Şimdi, yöntem select her sayı için bloğmuzu yürütür.
+
+İlk önce sayıyı 1 argüman olarak ileten bloğu yürütür.
+
+Şimdi bloğun içindeyiz ve number argüman olarak iletilen nesneye sayı olan yerel bir değişkene atanır 1.
+
+Bloğumuzun içinde şimdi odd? bu numaradaki yöntemi çağırıyoruz ve tabi ki 1 tek olduğu için bu geri dönecek true. 
+
+Bu bloğumuzun gövdesindeki tek ve dolayısıyla son ifade olduğundan, bloğumuzda true yönteme döner [select. select](http://select.select) bu nedenle numarayı tutacaktır (”seç”) 1.
+
+Daha sonra bloğu tekrar yürütür, bu sefer sayıyı geçer 2. Tabi ki, bu tek bir sayı olmadığı için, yöntem odd? ve dolayısıyla bloğumuz yönteme false geri dönecektir select. Bu nedenle bu öğeyi atar.
+
+Bunu dizedeki kalan öğelerin her biri için yapmaya devam eder ve sonunda şu dizeye sahip olur [1, 3, 5]. Blok, filtreleme kriteri olarak görev yaptı.
+
+Yöntem select daha sonra bu dizeyi döndürür ve Ruby onu p dizeyi ekrana yazdıran yönteme iletir.
+
+Böylece, yukarıdaki kod yazdırılır [1, 3, 5].
+
+Algılamayı Kullanan Bir Örnek 
+
+Bloğu ölçüt olarak kullanan başka bir yöntem örneği:
+
+```ruby
+p [1, 2, 3, 4, 5].detect { |number| number.even? }
+
+Çıktı: 2
+```
+
+Yine **detect** dizinin her bir elemanını teker teker bloğa geçirecek ve bloğun dönüş değerini kontrol edecektir. Bununla birlikte, blok doğru bir şey ("doğruya eşdeğer" bir şey) **detect** döndürür döndürmez, yöntem mevcut nesnenin kendisini döndürür. Bu nedenle, bu yazdırılacaktır **2**: dizideki çift olan ilk sayı.
+
+# Kontrolün Tersine Çevirilmesi?
+
+[KONTROLÜN TERSİNE ÇEVİRİLMESİ?](https://www.educative.io/courses/learn-ruby-from-scratch/gxn0v2wkkqk)
+
+Ruby'de blokları kabul eden çok daha fazla yöntem vardır ve bunlar çok farklı şeyler yaparlar. Ancak ortak bir noktaları var:
+
+> Bir programcı olarak sizden bir blok kabul ederek, yöntem kontrolü size aktarabilir.
+> 
+
+***Bu tasarım, kontrolün tersine çevrilmesi*** ilkesinin bir örneğidir ve Rubyistlerin blokları bu kadar çok sevmesinin gerçek nedeni budur.
+
+## **Bu ne anlama geliyor?**
+
+Kısacası, Ruby'nin yaratıcısı **Matz'ın** , yöntemlerin kontrolü kullanıcılarına (yani bir programcı olarak siz) geçirmesine izin vermek için kullanılabilecek bir aracı devreye soktuğu anlamına gelir.
+
+> Bu bağlamda kontrol , işlerin nasıl yürüyeceğine kimin karar vereceği sorusuna atıfta bulunur.
+> 
+
+Böyle bir aracın olmadığı eski dillerde, insanlar ya çok sayıda çok özel yöntem uygulamak ve kullanıcıların gelecekte neye ihtiyaç duyabileceklerini *tahmin etmek zorunda kaldılar.* Veya bu yöntemlerden hiçbirini uygulamamaya karar verirler.
+
+Örneğin, Ruby'de ,
+
+vb. gibi çok sayıda yöntem tanımlamamız gerekmez
+
+burada bu yöntemlerin her biri çok özel bir kullanım durumu için faydalı olacaktır.
+
+---
+
+Bunun yerine, sınıfın
+
+diziler için yalnızca tek bir çok genel yöntemi uygulaması gerekir:
+
+. Ruby'nin blokları olduğundan, yöntem (bir programcı olarak) kriteri kendiniz belirlemenize izin verebilir:
+
+---
+
+Bu şekilde Ruby, bir programcı olarak kontrolü ele almanıza ve öğeleri seçmek için neyin ölçüt olarak kullanıldığını belirlemenize izin verir.
+
+Bundan bahsetmemizin nedenlerinden biri, bunun yazılım tasarımına uygulanan oldukça soyut bir ilkenin güzel bir örneği olduğunu düşünmemizdir. Bunun gibi başka birçok ilke var ve zamanla size daha anlamlı gelecekler. Programlama dilleri ve kod, bu perspektiften, bir tasarım konusudur ve dolayısıyla sanat, sosyal ve kültürel soruların konusu olduğu kadar, kesinlikle mantıksal veya teknik olanlardan daha fazladır.
+
+# Yineleyiciler
+
+[YİNELEYİCİLER](https://www.educative.io/courses/learn-ruby-from-scratch/xllgYOrk0j9)
+
+Bir blok alan diziler ve karmalar üzerindeki yöntemlere yineleyiciler de denir.
+
+*Dizi üzerinde yinelediklerini* söylüyoruz , yani bu yöntemler dizinin her bir öğesini alıp onunla bir şeyler yapıyor.
+
+Ruby'de yineleyiciler "zincirlenebilir"dir ve birbirinin üzerine işlevsellik ekler.
+
+**each** Bu , **collect**, , gibi bir yineleyici yöntemine bir blok iletmezseniz, bir *yineleyici nesnesini* geri **select** alacağınız anlamına gelir. Daha sonra bu yineleyici nesnelerde daha fazla yöntem çağırabilir ve son olarak bir blok iletebilirsiniz. Şöyle:
+
+```ruby
+numbers = [1, 2, 3, 4, 5].collect.with_index do |number, index|
+number + index
+end
+p numbers
+
+Çıktı: [1, 3, 5, 7, 9]
+```
+
+## **Burada neler oluyor?**
+
+Yöntem **with_index**, herhangi bir yineleyici nesnede çağrılabilir. Tek yaptığı, öğenin kendisine ek olarak ikinci bir blok argümanı olarak dizi içindeki öğenin dizinini bloğa geçirmektir.
+
+Bloğun içinde daha sonra onu kullanabilir ve dizini sayının kendisine ekleyebiliriz.
+
+Bu nedenle, "ilk yineleme" için, ilk "konum", yani dizin olduğu için ve **1** ile bloğu arayacaktır . Bu nedenle, döner . İkinci yineleme için, ve ile bloğu çağırır ve döndürür , vb. **001213**
+
+Bu nedenle, yöntem çağrısı sonunda diziyi döndürür **[1, 3, 5, 7, 9].**
+
+> Ruby'deki yineleyiciler zincirlenebilir.
+>
